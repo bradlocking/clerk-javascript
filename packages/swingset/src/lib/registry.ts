@@ -134,6 +134,10 @@ import {
   Default as UserProfileAccountSectionDefault,
   meta as userProfileAccountSectionMeta,
 } from '../stories/user-profile-account-section.stories';
+import {
+  Default as UserProfileConnectedAccountsSectionDefault,
+  meta as userProfileConnectedAccountsSectionMeta,
+} from '../stories/user-profile-connected-accounts-section.stories';
 import { toSlug } from './slug';
 import type { StoryModule } from './types';
 
@@ -279,11 +283,16 @@ const userProfileAccountSectionModule: StoryModule = {
   meta: userProfileAccountSectionMeta,
   Default: UserProfileAccountSectionDefault,
 };
+const userProfileConnectedAccountsSectionModule: StoryModule = {
+  meta: userProfileConnectedAccountsSectionMeta,
+  Default: UserProfileConnectedAccountsSectionDefault,
+};
 
 export const registry: StoryModule[] = [
   // User
   userButtonModule,
   userProfileAccountSectionModule,
+  userProfileConnectedAccountsSectionModule,
   // Organization
   organizationProfileModule,
   organizationProfileGeneralPanelModule,

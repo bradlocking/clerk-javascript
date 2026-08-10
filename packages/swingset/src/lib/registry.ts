@@ -138,6 +138,10 @@ import {
   Default as UserProfileConnectedAccountsSectionDefault,
   meta as userProfileConnectedAccountsSectionMeta,
 } from '../stories/user-profile-connected-accounts-section.stories';
+import {
+  Default as UserProfileWeb3WalletsSectionDefault,
+  meta as userProfileWeb3WalletsSectionMeta,
+} from '../stories/user-profile-web3-wallets-section.stories';
 import { toSlug } from './slug';
 import type { StoryModule } from './types';
 
@@ -287,12 +291,17 @@ const userProfileConnectedAccountsSectionModule: StoryModule = {
   meta: userProfileConnectedAccountsSectionMeta,
   Default: UserProfileConnectedAccountsSectionDefault,
 };
+const userProfileWeb3WalletsSectionModule: StoryModule = {
+  meta: userProfileWeb3WalletsSectionMeta,
+  Default: UserProfileWeb3WalletsSectionDefault,
+};
 
 export const registry: StoryModule[] = [
   // User
   userButtonModule,
   userProfileAccountSectionModule,
   userProfileConnectedAccountsSectionModule,
+  userProfileWeb3WalletsSectionModule,
   // Organization
   organizationProfileModule,
   organizationProfileGeneralPanelModule,

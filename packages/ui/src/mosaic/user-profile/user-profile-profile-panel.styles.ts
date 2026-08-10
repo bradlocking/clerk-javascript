@@ -15,6 +15,17 @@ export const styles = stylex.create({
     height: space['6'],
     width: space['6'],
   },
+  sectionHeader: {
+    alignItems: 'flex-end',
+    columnGap: space['4'],
+    display: 'flex',
+    justifyContent: 'space-between',
+    minWidth: 0,
+  },
+  sectionTitle: {
+    flexGrow: 1,
+    minWidth: 0,
+  },
   root: {
     gap: space['6'],
     display: 'flex',

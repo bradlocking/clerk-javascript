@@ -143,6 +143,10 @@ import {
   meta as userProfileDeleteSectionMeta,
 } from '../stories/user-profile-delete-section.stories';
 import {
+  Default as UserProfileProfilePanelDefault,
+  meta as userProfileProfilePanelMeta,
+} from '../stories/user-profile-profile-panel.stories';
+import {
   Default as UserProfileWeb3WalletsSectionDefault,
   meta as userProfileWeb3WalletsSectionMeta,
 } from '../stories/user-profile-web3-wallets-section.stories';
@@ -291,6 +295,10 @@ const userProfileAccountSectionModule: StoryModule = {
   meta: userProfileAccountSectionMeta,
   Default: UserProfileAccountSectionDefault,
 };
+const userProfileProfilePanelModule: StoryModule = {
+  meta: userProfileProfilePanelMeta,
+  Default: UserProfileProfilePanelDefault,
+};
 const userProfileConnectedAccountsSectionModule: StoryModule = {
   meta: userProfileConnectedAccountsSectionMeta,
   Default: UserProfileConnectedAccountsSectionDefault,
@@ -307,6 +315,7 @@ const userProfileDeleteSectionModule: StoryModule = {
 export const registry: StoryModule[] = [
   // User
   userButtonModule,
+  userProfileProfilePanelModule,
   userProfileAccountSectionModule,
   userProfileConnectedAccountsSectionModule,
   userProfileWeb3WalletsSectionModule,

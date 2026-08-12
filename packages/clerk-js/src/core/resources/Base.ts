@@ -88,7 +88,14 @@ export abstract class BaseResource {
     requestInit: FapiRequestInit,
     opts: BaseFetchOptions = {},
   ): Promise<FapiResponseJSON<J> | null> {
-    return FraudProtection.getInstance().execute(this.clerk, () => this._baseFetch<J>(requestInit, opts));
+    return FraudProtection.getInstance().execute(
+      this.clerk,
+      () => this._baseFetch<J>(requestInit, opts),
+      // Lets the managed Protect challenge gate issue its own PATCH/GET with full resource-call
+      // semantics (client piggyback updates, ClerkAPIResponseError on 4xx) without re-entering
+      // FraudProtection.
+      (init, o) => this._baseFetch(init as FapiRequestInit, o),
+    );
   }
 
   // TODO @userland-errors:

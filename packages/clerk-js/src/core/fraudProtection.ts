@@ -1,6 +1,8 @@
 import { ClerkRuntimeError, isClerkAPIResponseError, isClerkRuntimeError } from '@clerk/shared/error';
 
 import { CaptchaChallenge } from '../utils/captcha/CaptchaChallenge';
+import type { RawResourceFetch } from './protectCheckGate';
+import { ProtectCheckGate } from './protectCheckGate';
 import type { Clerk } from './resources/internal';
 import { Client } from './resources/internal';
 
@@ -25,7 +27,22 @@ export class FraudProtection {
   ) {}
 
   // TODO @userland-errors:
-  public async execute<T extends () => Promise<any>, R = Awaited<ReturnType<T>>>(clerk: Clerk, cb: T): Promise<R> {
+  public async execute<T extends () => Promise<any>, R = Awaited<ReturnType<T>>>(
+    clerk: Clerk,
+    cb: T,
+    rawFetch?: RawResourceFetch,
+  ): Promise<R> {
+    // Managed Protect challenges ride successful payloads (HTTP 200 + pending `protect_check`),
+    // unlike the legacy captcha's error path, so every path that returns a result — including
+    // the post-captcha replays below — funnels through this gate check.
+    const run = async (): Promise<R> => {
+      const result = await cb();
+      if (!rawFetch) {
+        return result;
+      }
+      return (await ProtectCheckGate.getInstance().process(clerk, result, cb, rawFetch)) as R;
+    };
+
     // TODO @userland-errors:
     if (this.captchaAttemptsExceeded()) {
       throw new ClerkRuntimeError(
@@ -39,7 +56,7 @@ export class FraudProtection {
         await this.inflightException;
       }
 
-      return await cb();
+      return await run();
     } catch (e) {
       if (!isClerkAPIResponseError(e)) {
         throw e;
@@ -60,7 +77,7 @@ export class FraudProtection {
         await this.inflightException;
         // If this is resolved, it means the request finally resolved with 200
         // so we can replay the original request
-        return await cb();
+        return await run();
       }
 
       // Otherwise, create a new placeholder promise to prevent other exceptions from being handled
@@ -82,7 +99,7 @@ export class FraudProtection {
         this.inflightException = null;
       }
 
-      return await cb();
+      return await run();
     }
   }
 

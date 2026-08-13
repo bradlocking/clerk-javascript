@@ -35,18 +35,27 @@ export function Default() {
       <Section.Group>
         <Section.Row>
           <Section.Item>
-            <Section.Content>
-              <Section.Label>Profile picture</Section.Label>
-              <Section.Description>PNG or JPEG, Recommended size 1:1, up to 10MB.</Section.Description>
-            </Section.Content>
-            <Section.Actions>
-              <Avatar.Root size='lg'>
+            <Section.Media size='xl'>
+              <Avatar.Root size='fit'>
                 <Avatar.Image
                   alt='Preston Booth'
                   src='https://avatars.githubusercontent.com/u/51144033?v=4'
                 />
                 <Avatar.Fallback>PB</Avatar.Fallback>
               </Avatar.Root>
+            </Section.Media>
+            <Section.Content>
+              <Section.Label>Profile picture</Section.Label>
+              <Section.Description>Recommend size 1:1, up to 10MB.</Section.Description>
+            </Section.Content>
+            <Section.Actions>
+              <Button
+                color='neutral'
+                size='sm'
+                variant='outline'
+              >
+                Upload
+              </Button>
             </Section.Actions>
           </Section.Item>
         </Section.Row>
@@ -63,7 +72,7 @@ export function Default() {
                 size='sm'
                 variant='outline'
               >
-                Update name
+                Edit name
               </Button>
             </Section.Actions>
           </Section.Item>
@@ -81,7 +90,7 @@ export function Default() {
                 size='sm'
                 variant='outline'
               >
-                Update username
+                Edit username
               </Button>
             </Section.Actions>
           </Section.Item>
@@ -116,18 +125,27 @@ export function MultipleEmailAndPhoneNumbers() {
       <Section.Group>
         <Section.Row>
           <Section.Item>
-            <Section.Content>
-              <Section.Label>Profile picture</Section.Label>
-              <Section.Description>PNG or JPEG, Recommended size 1:1, up to 10MB.</Section.Description>
-            </Section.Content>
-            <Section.Actions>
-              <Avatar.Root size='lg'>
+            <Section.Media size='xl'>
+              <Avatar.Root size='fit'>
                 <Avatar.Image
                   alt='Preston Booth'
                   src='https://avatars.githubusercontent.com/u/51144033?v=4'
                 />
                 <Avatar.Fallback>PB</Avatar.Fallback>
               </Avatar.Root>
+            </Section.Media>
+            <Section.Content>
+              <Section.Label>Profile picture</Section.Label>
+              <Section.Description>Recommend size 1:1, up to 10MB.</Section.Description>
+            </Section.Content>
+            <Section.Actions>
+              <Button
+                color='neutral'
+                size='sm'
+                variant='outline'
+              >
+                Upload
+              </Button>
             </Section.Actions>
           </Section.Item>
         </Section.Row>
@@ -144,7 +162,7 @@ export function MultipleEmailAndPhoneNumbers() {
                 size='sm'
                 variant='outline'
               >
-                Update name
+                Edit name
               </Button>
             </Section.Actions>
           </Section.Item>
@@ -162,7 +180,7 @@ export function MultipleEmailAndPhoneNumbers() {
                 size='sm'
                 variant='outline'
               >
-                Update username
+                Edit username
               </Button>
             </Section.Actions>
           </Section.Item>
